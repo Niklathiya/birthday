@@ -36,10 +36,26 @@ import {
   Map as MapIcon,
   Home,
   Infinity as InfinityIcon,
+  HeartHandshake,
+  Camera,
+  Key,
+  Crown,
+  Flower2,
 } from "lucide-react";
 
 // Register GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
+
+// Import custom images
+import img1 from "./assets/042A6373.JPG.jpeg";
+import img2 from "./assets/042A7405.JPG.jpeg";
+import img3 from "./assets/042A8553.JPG.jpeg";
+import img4 from "./assets/FullSizeRender-23.jpg";
+import img5 from "./assets/IMG-20251130-WA0020.jpg.jpeg";
+import img6 from "./assets/RUID47cd335b6c084a24b8a7fba7963d28f3.jpg.jpeg";
+import img7 from "./assets/VIRA8848.JPG.jpeg";
+import img8 from "./assets/story_1771354872542.jpeg";
+import ourSong from "./assets/my flower girl.webm";
 
 // Lucide Icon mapping for dynamic render
 const IconMap = {
@@ -47,6 +63,7 @@ const IconMap = {
   sun: Sun,
   play: Play,
   pause: Pause,
+  music: Music,
   "music-2": Music,
   "calendar-heart": CalendarHeart,
   coffee: Coffee,
@@ -76,6 +93,11 @@ const IconMap = {
   map: MapIcon,
   home: Home,
   infinity: InfinityIcon,
+  "heart-handshake": HeartHandshake,
+  camera: Camera,
+  key: Key,
+  crown: Crown,
+  flower: Flower2,
 };
 
 const DynamicIcon = ({ name, className, ...props }) => {
@@ -103,6 +125,7 @@ export default function App() {
   const [envelopeOpen, setEnvelopeOpen] = useState(false);
   const [letterText, setLetterText] = useState("");
   const [typingStarted, setTypingStarted] = useState(false);
+  const [typingComplete, setTypingComplete] = useState(false);
 
   // Surprise Gift States
   const [giftState, setGiftState] = useState("closed"); // 'closed', 'shaking', 'opened'
@@ -123,7 +146,7 @@ export default function App() {
   const giftBoxRef = useRef(null);
 
   // Counters values
-  const counterTargets = [251, 3, 1, "480+", "999+", 2609, "infinite"];
+  const counterTargets = [251, 3, 1, "560+", "999+", 2768, "infinite"];
   const counterLabels = [
     { label: "Days Together", icon: "calendar-heart" },
     { label: "Coffee Dates", icon: "coffee" },
@@ -137,27 +160,21 @@ export default function App() {
   // Reasons I Love You Data
   const reasonsData = useMemo(
     () => [
-      ["smile", "I love your smile — it makes any room feel warmer."],
+      ["smile", "I love your smile it takes me on another world"],
       [
         "hand-heart",
         "I love how you always support me, even on my hardest days.",
       ],
+      ["laugh", "I Love The Way you talk with other मेरी शेरनी."],
+      ["ear", "I love your nature behaviour that makes Aura Positive"],
       [
-        "laugh",
-        "I love the way you laugh, completely and without holding back.",
+        "sparkles",
+        "I love your confidence and determination regarding your future..our future",
       ],
-      [
-        "ear",
-        "I love that you really listen, not just wait for your turn to talk.",
-      ],
-      ["sparkles", "I love how you find magic in ordinary days."],
-      ["utensils", "I love sharing meals with you, even the ones we burn."],
-      [
-        "music",
-        "I love your taste in music and how you sing it wrong on purpose.",
-      ],
+      ["utensils", "I love the way you hold me in everywhere"],
+      ["music", "I love the peace i feel when i am with you just like music."],
       ["book-open", "I love how curious you are about everything."],
-      ["sun", "I love how you make mornings feel less heavy."],
+      ["sun", "I love how you make mornings feel less heavy by call."],
       ["umbrella", "I love how safe I feel when you're around."],
       [
         "gem",
@@ -165,11 +182,11 @@ export default function App() {
       ],
       ["feather", "I love how gently you handle my worries."],
       ["star", "I love how you believe in my dreams more than I do sometimes."],
-      ["cloud", "I love daydreaming with you about our future."],
       [
-        "flame",
-        "I love your passion for the things — and people — you care about.",
+        "cloud",
+        "I love daydreaming with you about our future (anisha's home).",
       ],
+      ["flame", "I love your laughter it's my favourite sound."],
       [
         "gift",
         "I love how thoughtful you are, even with the smallest gestures.",
@@ -180,9 +197,17 @@ export default function App() {
         "I love our late-night conversations about everything and nothing.",
       ],
       ["shield", "I love how you stand by me, always."],
+      ["infinity", "I love the warmth of your hugs."],
       [
-        "infinity",
-        "I love that with you, forever doesn't feel like a long time.",
+        "heart-handshake",
+        "I love you because every day with you reminds me that I chose the right person to spend my life with.",
+      ],
+      ["camera", "I love your beautiful soul more than your beauty."],
+      ["key", "I love that you are my best friend as well as my wife"],
+      ["crown", "I love how you treat me with so much respect and care."],
+      [
+        "flower",
+        "I don't just love you for 25 reasons... I love you for countless reasons that words can never fully express. ❤️",
       ],
     ],
     [],
@@ -460,15 +485,25 @@ export default function App() {
       const rawVal = counterTargets[i] !== undefined ? counterTargets[i] : 100;
       let numericVal = 0;
       let suffix = "";
+      let isInfinite = false;
+
       if (typeof rawVal === "number") {
         numericVal = rawVal;
       } else if (typeof rawVal === "string") {
-        const match = rawVal.match(/^([\d.,]+)(.*)$/);
-        if (match) {
-          numericVal = parseFloat(match[1].replace(/,/g, "")) || 0;
-          suffix = match[2];
+        if (
+          rawVal.toLowerCase() === "infinite" ||
+          rawVal.toLowerCase() === "infinity"
+        ) {
+          isInfinite = true;
+          numericVal = 9999;
         } else {
-          numericVal = parseFloat(rawVal) || 0;
+          const match = rawVal.match(/^([\d.,]+)(.*)$/);
+          if (match) {
+            numericVal = parseFloat(match[1].replace(/,/g, "")) || 0;
+            suffix = match[2];
+          } else {
+            numericVal = parseFloat(rawVal) || 0;
+          }
         }
       } else {
         numericVal = parseFloat(rawVal) || 0;
@@ -485,7 +520,20 @@ export default function App() {
           toggleActions: "play none none none",
         },
         onUpdate: function () {
-          el.textContent = Math.floor(animObj.val).toLocaleString() + suffix;
+          if (isInfinite) {
+            if (animObj.val >= numericVal) {
+              el.textContent = "∞";
+            } else {
+              el.textContent = Math.floor(animObj.val).toLocaleString() + "+";
+            }
+          } else {
+            el.textContent = Math.floor(animObj.val).toLocaleString() + suffix;
+          }
+        },
+        onComplete: function () {
+          if (isInfinite) {
+            el.textContent = "∞";
+          }
         },
       });
     });
@@ -506,12 +554,15 @@ export default function App() {
   const typeText = (fullText) => {
     let i = 0;
     setLetterText("");
+    setTypingComplete(false);
     const speed = 24;
     const step = () => {
       if (i <= fullText.length) {
         setLetterText(fullText.slice(0, i));
         i++;
         setTimeout(step, speed);
+      } else {
+        setTypingComplete(true);
       }
     };
     step();
@@ -526,7 +577,10 @@ From the moment you walked into my life, everything got brighter. Every memory w
 
 On your birthday, I just want you to know how deeply you are loved, today and every day after this one.
 
-Here's to many more years of us.`;
+Here's to many more years of us.
+
+Forever yours,
+Divyang`;
 
     if (!typingStarted) {
       setTypingStarted(true);
@@ -619,16 +673,6 @@ Here's to many more years of us.`;
         <div className="scroll-progress-fill" ref={scrollFillRef}></div>
       </div>
 
-      {/* ============ THEME TOGGLE ============ */}
-      <button
-        id="themeToggle"
-        className="theme-toggle"
-        onClick={() => setTheme((prev) => (prev === "dark" ? "light" : "dark"))}
-        aria-label="Toggle light and dark mode"
-      >
-        <DynamicIcon name={theme === "dark" ? "sun" : "moon"} />
-      </button>
-
       {/* ============ AMBIENT BACKGROUND ============ */}
       <div className="ambient-bg" aria-hidden="true">
         <div className="gradient-blob blob-1"></div>
@@ -664,12 +708,9 @@ Here's to many more years of us.`;
           <DynamicIcon name="music-2" />
         </div>
         <div className="music-info">
-          <span className="music-title">Add your song title</span>
-          <span className="music-artist">— our song —</span>
+          <span className="music-title">My Flower Girl</span>
         </div>
-        <audio ref={audioRef} loop preload="none">
-          <source src="assets/music/our-song.mp3" type="audio/mpeg" />
-        </audio>
+        <audio ref={audioRef} src={ourSong} loop preload="auto" />
       </div>
 
       <main>
@@ -890,14 +931,14 @@ Here's to many more years of us.`;
           </div>
           <div className="masonry" id="masonry">
             {[
-              { type: "tall", placeholder: "Photo 1", caption: "[Caption]" },
-              { type: "", placeholder: "Photo 2", caption: "[Caption]" },
-              { type: "short", placeholder: "Photo 3", caption: "[Caption]" },
-              { type: "", placeholder: "Photo 4", caption: "[Caption]" },
-              { type: "tall", placeholder: "Photo 5", caption: "[Caption]" },
-              { type: "short", placeholder: "Photo 6", caption: "[Caption]" },
-              { type: "", placeholder: "Photo 7", caption: "[Caption]" },
-              { type: "tall", placeholder: "Photo 8", caption: "[Caption]" },
+              { type: "tall", src: img1, caption: "Cherished moments" },
+              { type: "", src: img2, caption: "Your beautiful smile" },
+              { type: "tall", src: img3, caption: "Wonderful times" },
+              { type: "", src: img4, caption: "Unforgettable memories" },
+              { type: "tall", src: img5, caption: "Special days together" },
+              { type: "tall", src: img6, caption: "Making each other laugh" },
+              { type: "extra-tall", src: img7, caption: "Pure happiness" },
+              { type: "extra-tall", src: img8, caption: "Forever and always" },
             ].map((p, i) => (
               <figure
                 key={i}
@@ -905,10 +946,14 @@ Here's to many more years of us.`;
                 data-caption={p.caption}
                 onClick={() => setLightboxPhoto(p)}
               >
-                <div
-                  className="placeholder-photo"
-                  data-placeholder={p.placeholder}
-                ></div>
+                {p.src ? (
+                  <img src={p.src} alt={p.caption} />
+                ) : (
+                  <div
+                    className="placeholder-photo"
+                    data-placeholder={p.placeholder}
+                  ></div>
+                )}
               </figure>
             ))}
           </div>
@@ -932,10 +977,14 @@ Here's to many more years of us.`;
           </button>
           {lightboxPhoto && (
             <div className="lightbox-content">
-              <div
-                className="placeholder-photo"
-                data-placeholder={lightboxPhoto.placeholder}
-              ></div>
+              {lightboxPhoto.src ? (
+                <img src={lightboxPhoto.src} alt={lightboxPhoto.caption} />
+              ) : (
+                <div
+                  className="placeholder-photo"
+                  data-placeholder={lightboxPhoto.placeholder}
+                ></div>
+              )}
               <p className="lightbox-caption">{lightboxPhoto.caption}</p>
             </div>
           )}
@@ -944,7 +993,7 @@ Here's to many more years of us.`;
         {/* ============ REASONS I LOVE YOU ============ */}
         <section className="section" id="reasons">
           <div className="section-head">
-            <p className="eyebrow">twenty reasons</p>
+            <p className="eyebrow">twenty-five reasons</p>
             <h2 className="section-title">Reasons I Love You</h2>
           </div>
           <div className="reasons-grid" id="reasonsGrid">
@@ -979,11 +1028,6 @@ Here's to many more years of us.`;
               <div className="envelope-back"></div>
               <div className="envelope-letter" id="envelopeLetter">
                 <p className="letter-text">{letterText}</p>
-                <p className="letter-signoff">
-                  Forever yours,
-                  <br />
-                  <span>[Your Name]</span>
-                </p>
               </div>
               <div className="envelope-flap"></div>
               <div className="envelope-front"></div>
@@ -1013,28 +1057,24 @@ Here's to many more years of us.`;
                 <DynamicIcon name="compass" />
               </div>
               <h3>More Adventures</h3>
-              <p>[Describe a dream adventure you want to share.]</p>
             </div>
             <div className="dream-stop">
               <div className="dream-icon">
                 <DynamicIcon name="map" />
               </div>
               <h3>Traveling Together</h3>
-              <p>[Name a place you both want to visit.]</p>
             </div>
             <div className="dream-stop">
               <div className="dream-icon">
                 <DynamicIcon name="home" />
               </div>
               <h3>Dream Home</h3>
-              <p>[Describe the home you imagine building together.]</p>
             </div>
             <div className="dream-stop">
               <div className="dream-icon">
                 <DynamicIcon name="infinity" />
               </div>
               <h3>Growing Old Together</h3>
-              <p>[A promise about the years ahead.]</p>
             </div>
           </div>
         </section>
@@ -1060,6 +1100,15 @@ Here's to many more years of us.`;
               <h3>
                 Happy Birthday, My Love <span className="heart-emoji">❤️</span>
               </h3>
+              <p className="text-center mt-5">
+                A one more surprise is waiting just for you
+              </p>
+              <p style={{ padding: 0 }}>solve it and get it</p>
+              <p>
+                સફર તો માત્ર બહાનું હતું, સાચી મંઝિલ તો તારા સ્મિતમાં છે. આજે
+                આગળ નહીં, પાછળ ક્યાંક નજર કર, જ્યાં તારા સ્મિત ને એક સાથ મળશે.
+                🎁 Make your smile more Brighter
+              </p>
             </div>
           </div>
         </section>
@@ -1094,13 +1143,6 @@ Here's to many more years of us.`;
           </h2>
         </section>
       </main>
-
-      <footer className="footer">
-        <p>
-          Made with <DynamicIcon name="heart" className="footer-heart" /> by
-          [Your Name] &mdash; {new Date().getFullYear()}
-        </p>
-      </footer>
     </>
   );
 }
