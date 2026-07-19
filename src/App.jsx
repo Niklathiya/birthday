@@ -931,12 +931,12 @@ Divyang`;
           </div>
           <div className="masonry" id="masonry">
             {[
-              { type: "tall", src: img1, caption: "Cherished moments" },
+              { type: "tall", src: img1, caption: "Sparkling ✨" },
               { type: "", src: img2, caption: "Your beautiful smile" },
-              { type: "tall", src: img3, caption: "Wonderful times" },
+              { type: "tall", src: img3, caption: "Simply elegent" },
               { type: "", src: img4, caption: "Unforgettable memories" },
               { type: "tall", src: img5, caption: "Special days together" },
-              { type: "tall", src: img6, caption: "Making each other laugh" },
+              { type: "tall", src: img6, caption: "Happy ties" },
               { type: "extra-tall", src: img7, caption: "Pure happiness" },
               { type: "extra-tall", src: img8, caption: "Forever and always" },
             ].map((p, i) => (
