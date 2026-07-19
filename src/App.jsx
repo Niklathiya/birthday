@@ -55,6 +55,14 @@ import img5 from "./assets/IMG-20251130-WA0020.jpg.jpeg";
 import img6 from "./assets/RUID47cd335b6c084a24b8a7fba7963d28f3.jpg.jpeg";
 import img7 from "./assets/VIRA8848.JPG.jpeg";
 import img8 from "./assets/story_1771354872542.jpeg";
+import imgTheDayWeMet from "./assets/The Day We Met.png";
+import imgOurFirstConversation from "./assets/Our First Conversation.png";
+import imgDayOfJal from "./assets/day of jal.png";
+import imgDayOfMovie from "./assets/day of movie.png";
+import imgTrip from "./assets/trip.png";
+import imgBirthday from "./assets/birthday.png";
+import imgToday from "./assets/today.png";
+import imgFuture from "./assets/future.png";
 import ourSong from "./assets/my flower girl.webm";
 
 // Lucide Icon mapping for dynamic render
@@ -774,10 +782,12 @@ Divyang`;
             <div className="timeline-line"></div>
 
             <article className="timeline-card" data-side="left">
-              <div
-                className="timeline-photo placeholder-photo"
-                data-placeholder="The day we met"
-              ></div>
+              <img
+                className="timeline-photo"
+                src={imgTheDayWeMet}
+                alt="The day we met"
+                style={{ objectFit: "cover" }}
+              />
               <div className="timeline-body">
                 <span className="timeline-date">
                   15<sup>th</sup> November, 2025
@@ -791,10 +801,12 @@ Divyang`;
             </article>
 
             <article className="timeline-card" data-side="right">
-              <div
-                className="timeline-photo placeholder-photo"
-                data-placeholder="Our first conversation"
-              ></div>
+              <img
+                className="timeline-photo"
+                src={imgOurFirstConversation}
+                alt="The day we met"
+                style={{ objectFit: "cover" }}
+              />
               <div className="timeline-body">
                 <span className="timeline-date">
                   15<sup>th</sup> November, 2025
@@ -808,10 +820,12 @@ Divyang`;
             </article>
 
             <article className="timeline-card" data-side="left">
-              <div
-                className="timeline-photo placeholder-photo"
-                data-placeholder="The day of jal"
-              ></div>
+              <img
+                className="timeline-photo"
+                src={imgDayOfJal}
+                alt="The day we met"
+                style={{ objectFit: "cover" }}
+              />
               <div className="timeline-body">
                 <span className="timeline-date">
                   30<sup>th</sup> November, 2025
@@ -822,10 +836,12 @@ Divyang`;
             </article>
 
             <article className="timeline-card" data-side="right">
-              <div
-                className="timeline-photo placeholder-photo"
-                data-placeholder="Tere ishq mein"
-              ></div>
+              <img
+                className="timeline-photo"
+                src={imgDayOfMovie}
+                alt="The day we met"
+                style={{ objectFit: "cover" }}
+              />
               <div className="timeline-body">
                 <span className="timeline-date">
                   2<sup>nd</sup> Decenmber, 2025
@@ -839,10 +855,12 @@ Divyang`;
             </article>
 
             <article className="timeline-card" data-side="left">
-              <div
-                className="timeline-photo placeholder-photo"
-                data-placeholder="Favorite trip"
-              ></div>
+              <img
+                className="timeline-photo"
+                src={imgTrip}
+                alt="The day we met"
+                style={{ objectFit: "cover" }}
+              />
               <div className="timeline-body">
                 <span className="timeline-date">
                   14<sup>th</sup> Feburary, 2026
@@ -857,10 +875,12 @@ Divyang`;
             </article>
 
             <article className="timeline-card" data-side="right">
-              <div
-                className="timeline-photo placeholder-photo"
-                data-placeholder="Unforgettable moment"
-              ></div>
+              <img
+                className="timeline-photo"
+                src={imgBirthday}
+                alt="The day we met"
+                style={{ objectFit: "cover" }}
+              />
               <div className="timeline-body">
                 <span className="timeline-date">
                   5<sup>th</sup> April, 2026
@@ -875,10 +895,12 @@ Divyang`;
             </article>
 
             <article className="timeline-card" data-side="left">
-              <div
-                className="timeline-photo placeholder-photo"
-                data-placeholder="Today"
-              ></div>
+              <img
+                className="timeline-photo"
+                src={imgToday}
+                alt="The day we met"
+                style={{ objectFit: "cover" }}
+              />
               <div className="timeline-body">
                 <span className="timeline-date">Today</span>
                 <h3>Today</h3>
@@ -890,10 +912,12 @@ Divyang`;
             </article>
 
             <article className="timeline-card" data-side="right">
-              <div
-                className="timeline-photo placeholder-photo"
-                data-placeholder="Forever to come"
-              ></div>
+              <img
+                className="timeline-photo"
+                src={imgFuture}
+                alt="The day we met"
+                style={{ objectFit: "cover" }}
+              />
               <div className="timeline-body">
                 <span className="timeline-date">Forever</span>
                 <h3>Forever to Come</h3>
